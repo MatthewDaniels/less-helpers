@@ -1,0 +1,37 @@
+
+/*
+Example transition timings
+
+As a fairly opinionated view of animations - when a user interacts with something,
+it should react immediately - putting an ease-in on these interactions makes it 
+feel sluggish.
+
+It is also nice when the user removes their focus on something that it should more
+rapidly go back to its orignal state than it showed its interacted state, so a shorter
+timeframe is used for this, as well as an ease-in to allow the user to see the 
+transition back. This also has the effect of creating "trails" if the user quickly 
+interacts with objects
+
+*/
+
+@linkOverSpeed:         0.375s;
+@linkOutSpeed:          0.25s;
+@linkOverEase:          @easeOutQuad;
+@linkOutEase:           @easeInQuad;
+
+/** Example Usage: 
+
+Note: The HOVER pseudo state should have the OVER (as in mouse over) speed and easing function
+
+a { 
+    transition-property: background-color, background-image, color, border-color;
+    transition-duration: @linkOutSpeed;
+    .transition-timing(@linkOutEase);
+
+    &:hover {
+        transition-duration: @linkOverSpeed;
+        .transition-timing(@linkOverEase);
+    }
+}
+
+*/
